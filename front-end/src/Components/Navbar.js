@@ -7,9 +7,8 @@ const Navbar = () => {
             <div className="logo">
                 <h2>Students Portal</h2>
             </div>
-            <div className="searchBar">
-                <input type="text" placeholder="Search" />
-                <Button buttonText='Search'/>
+            <div>
+              <Button buttonText='Login' />
             </div>
         </div>
     </div>
