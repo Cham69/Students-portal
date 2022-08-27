@@ -22,7 +22,6 @@ exports.editUser = async(req, res)=>{
         password
     }
     try{
-        console.log(newData);
         const editedUser = await IUserModel.findByIdAndUpdate(userId, newData);
         res.status(200).json('Changed the info successfully');
     }catch(error){
