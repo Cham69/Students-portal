@@ -5,6 +5,6 @@ const {getAllUsers, getSingleUser, addTempUser, editUser} = require('../controll
 router.get('/', getAllUsers);
 router.get('/user/:id', getSingleUser);
 router.post('/add', addTempUser);
-router.post('/edit:id', editUser);
+router.put('/edit/:id', editUser);
 
 module.exports = router;

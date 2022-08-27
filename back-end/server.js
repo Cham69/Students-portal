@@ -18,7 +18,7 @@ app.use('/users', iUserRoutes);
 app.use('/notes', notesRoutes);
 
 //Database connection using mongoose
-const DBCONNECTION_URL = 'mongodb+srv://ChamakaJ:royalCOLLEGE@studentsportal.tilxsnm.mongodb.net/?retryWrites=true&w=majority';
+const DBCONNECTION_URL = 'mongodb+srv://ChamakaJ:royalCOLLEGE@studentsportal.tilxsnm.mongodb.net/Students_portal_db?retryWrites=true&w=majority';
 
 mongoose.connect(DBCONNECTION_URL, {
         useUnifiedTopology: true,
