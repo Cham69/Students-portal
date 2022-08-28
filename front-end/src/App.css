@@ -49,3 +49,7 @@ input{
   font-size: 3em;
   margin-top: 20px;
 }
+.error{
+  font-size: 2em;
+  margin-top: 50px;
+}

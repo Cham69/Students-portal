@@ -1,17 +1,25 @@
 import React from 'react';
 import Admin from './Admin/Admin';
+import UserList from './Admin/UserList';
 import './App.css';
 import Home from './Components/Home';
 import LoginForm from './Components/LoginForm';
 import Navbar from './Components/Navbar';
+import EditProfile from './Student/EditProfile';
+import NotesList from './Student/NotesList';
+import Error from './Components/Error';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
+    <Router>
       <Navbar />
-      <Home />
-      <LoginForm />
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/login" element={<LoginForm />}/>
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </Router>
   );
 }
 
