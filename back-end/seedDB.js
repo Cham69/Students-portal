@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const IUserModel = require('./models/IUSerModel');
+const bcrypt = require('bcrypt');
 
 //Database connection using mongoose
 const DBCONNECTION_URL = 'mongodb+srv://ChamakaJ:royalCOLLEGE@studentsportal.tilxsnm.mongodb.net/Students_portal_db?retryWrites=true&w=majority';
@@ -14,7 +15,12 @@ mongoose.connect(DBCONNECTION_URL, {
         console.log(error.message);
     });
 
-//Users list for seeding
+//Hashing the passwords
+const hashPasswords = async ()=>{
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash('superAdminPassword1', salt);
+    
+    //Users list for seeding
 const seedUsers = [
     {
         firstName: 'Harry',
@@ -23,7 +29,7 @@ const seedUsers = [
         dateOfBirth: 02/25/1990,
         mobile: 0765412427,
         status: true,
-        password:'superAdmin',
+        hashedPassword:hashedPassword,
         accountType: 'admin'
     },
     {
@@ -33,13 +39,19 @@ const seedUsers = [
         dateOfBirth: 05/22/1990,
         mobile: 0765414136,
         status: true,
-        password:'superAdmin',
+        hashedPassword:hashedPassword,
         accountType: 'admin'
     }
 ];
+await IUserModel.insertMany(seedUsers);
+}
 
-const seed = async ()=>{
-    await IUserModel.insertMany(seedUsers);
+hashPasswords();
+
+
+
+/* const seed = async ()=>{
+    
 }
 
 seed().then(()=>{
@@ -47,4 +59,4 @@ seed().then(()=>{
     mongoose.connection.close();
 }).catch((error)=>{
     console.log(error.message);
-})
+}) */
