@@ -74,7 +74,8 @@ exports.loginUser = async (req, res) => {
         res.status(201).json({
             id:checkUser.id,
             email: checkUser.email,
-            firstName: checkUser.firstName
+            firstName: checkUser.firstName,
+            message: 'Successfully verified'
         })
         }else{
             res.status(400).json({
