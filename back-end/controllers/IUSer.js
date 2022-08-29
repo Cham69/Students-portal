@@ -75,6 +75,7 @@ exports.loginUser = async (req, res) => {
             id:checkUser.id,
             email: checkUser.email,
             firstName: checkUser.firstName,
+            accountType: checkUser.accountType,
             message: 'Successfully verified'
         })
         }else{

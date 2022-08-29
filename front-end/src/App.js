@@ -9,13 +9,17 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Student from './Student/Student';
 
 function App() {
-  const [userType, setUserType] = useState('admi');
+  const [userType, setUserType] = useState('');
+
+  const findUserType = (type)=>{
+    setUserType(type);
+  }
   return (
     <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/login" element={<LoginForm />}/>
+        <Route path="/login" element={<LoginForm findUserType={findUserType}/>} />
         <Route path="/dashboard" element={userType=='admin'?<Admin />:<Student />}/>
         <Route path="*" element={<Error />} />
       </Routes>

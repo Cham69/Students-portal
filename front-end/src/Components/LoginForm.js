@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const LoginForm = () => {
+const LoginForm = ({findUserType}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [login, setLogin] = useState(false);
+
+    const navigate = useNavigate(); 
+    const userType = (type) =>{
+        findUserType(type);
+    }
 
     const loginUser = (e)=>{
         e.preventDefault();
@@ -16,8 +23,14 @@ const LoginForm = () => {
             console.log(response)
             setEmail('');
             setPassword('');
+            setLogin(true);
+            navigate("/dashboard");
+            userType(response.data.accountType);
         }).catch(error => {
             console.log(error.message)
+            setEmail('');
+            setPassword('');
+            alert('Invalid credentials');
         })
         }
     }
