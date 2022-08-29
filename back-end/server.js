@@ -12,13 +12,14 @@ const PORT = process.env.PORT || 8000;
 
 app.use(cors());
 app.use(bodyParser.json());
+dotenv.config();
 
 //Basic routes
 app.use('/users', iUserRoutes);
 app.use('/notes', notesRoutes);
 
 //Database connection using mongoose
-const DBCONNECTION_URL = 'mongodb+srv://ChamakaJ:royalCOLLEGE@studentsportal.tilxsnm.mongodb.net/Students_portal_db?retryWrites=true&w=majority';
+const DBCONNECTION_URL = process.env.MONGODB_URI;
 
 mongoose.connect(DBCONNECTION_URL, {
         useUnifiedTopology: true,
