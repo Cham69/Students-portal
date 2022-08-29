@@ -11,14 +11,15 @@ const LoginForm = () => {
                         email: email,
                         password: password
                     }
-        axios.post('http://localhost:8000/users/login', user).then(response=>{
+        if(email && password){
+            axios.post('http://localhost:8000/users/login', user).then(response=>{
             console.log(response)
             setEmail('');
             setPassword('');
         }).catch(error => {
             console.log(error.message)
         })
-        
+        }
     }
 
   return (

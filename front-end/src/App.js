@@ -9,7 +9,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Student from './Student/Student';
 
 function App() {
-  const [userType, setUserType] = useState('admin');
+  const [userType, setUserType] = useState('admi');
   return (
     <Router>
       <Navbar />
